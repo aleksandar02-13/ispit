@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Title of the document</title>
+</head>
+
+<body>
+	<center><a href="#" id="test">Test Ajax Streaming</a></center>
+         <script type="text/javascript">
+           document.getElementById('test').onclick = function() {
+             xhr = new XMLHttpRequest();
+             xhr.open("GET", "bafering.php", true);
+             xhr.onprogress = function(e) {
+               alert(e.currentTarget.responseText);
+             }
+             xhr.onreadystatechange = function() {
+               if (xhr.readyState == 4) {
+                 console.log("Complete = " + xhr.responseText);
+               }
+             }
+             xhr.send();
+           };
+         </script>
+</body>
+
+</html>
